@@ -1,0 +1,24 @@
+{
+    "patterns": [
+        {
+            "name": "Singleton",
+            "description": "Singleton desc",
+            "key": "Singleton"
+        },
+        {
+            "name": "Bridge Pattern",
+            "description": "Bridge Pattern desc",
+            "key": "Bridge Pattern"
+        },
+        {
+            "name": "Factory Pattern",
+            "description": "Factory Pattern desc",
+            "key": "Factory Pattern"
+        },
+        {
+            "name": "Adapter Pattern",
+            "description": "Adapter Pattern desc",
+            "key": "Adapter Pattern"
+        }
+    ]
+}

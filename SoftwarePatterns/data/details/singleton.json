@@ -1,0 +1,20 @@
+{
+    "controls": [
+        {
+            "type": "title",
+            "value": "Singleton"
+        },
+        {
+            "type": "paragraph",
+            "value": "Singleton pattern is a great pattern"
+        },
+        {
+            "type": "image",
+            "value": "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"
+        },
+        {
+            "type": "paragraph",
+            "value": "Singleton pattern is such a old pattern but we still use it."
+        }
+    ]
+}

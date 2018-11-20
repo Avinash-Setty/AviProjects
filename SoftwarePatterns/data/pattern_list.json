@@ -3,22 +3,22 @@
         {
             "name": "Singleton",
             "description": "Singleton desc",
-            "key": "Singleton"
+            "key": "singleton"
         },
         {
             "name": "Bridge Pattern",
             "description": "Bridge Pattern desc",
-            "key": "Bridge Pattern"
+            "key": "bridgepattern"
         },
         {
             "name": "Factory Pattern",
             "description": "Factory Pattern desc",
-            "key": "Factory Pattern"
+            "key": "factorypattern"
         },
         {
             "name": "Adapter Pattern",
             "description": "Adapter Pattern desc",
-            "key": "Adapter Pattern"
+            "key": "adapterpattern"
         }
     ]
 }

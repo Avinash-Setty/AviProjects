@@ -1,31 +1,40 @@
 import React from 'react';
 import {
-  Image,
   Platform,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  FlatList
+  FlatList, 
+  ActivityIndicator,
 } from 'react-native';
 import {
   ListItem
 } from 'react-native-elements';
-import { WebBrowser } from 'expo';
-var patternList = require('../data/pattern_list.json');
-import { MonoText } from '../components/StyledText';
+import { connect } from 'react-redux';
+import { patternListFetch } from '../actions'
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Patterns'
   };
 
+  componentWillMount() {
+    this.props.patternListFetch();
+  }
+
   render() {
+    if (this.props.patterns.length === 0) {
+      return (
+        <View style={styles.spinnerStyle}>
+          <ActivityIndicator size={'large'} />
+        </View>
+      )
+    }
     return (
       <View style={styles.container}>
           <FlatList 
-            data={patternList.patterns} 
+            data={this.props.patterns.patterns} 
             renderItem={({item}) => <ListItem 
                 title={item.name} 
                 avatar={{uri:'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'}}
@@ -39,7 +48,21 @@ export default class HomeScreen extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  const { patterns } = state.patternList;
+  return {
+    patterns
+  };
+};
+
+export default connect(mapStateToProps, { patternListFetch })(HomeScreen)
+
 const styles = StyleSheet.create({
+  spinnerStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',

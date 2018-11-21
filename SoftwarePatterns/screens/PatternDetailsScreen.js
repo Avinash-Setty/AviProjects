@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Agregator } from '../components';
 
 export default class PatternDetailsScreen extends React.Component {
     static navigationOptions = {
@@ -9,9 +10,7 @@ export default class PatternDetailsScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text>Details Screen</Text>
-                </View>
+                <Agregator />
             </View>
         )
     }

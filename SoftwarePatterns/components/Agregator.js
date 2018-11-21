@@ -1,24 +1,24 @@
 import { React } from 'react';
 import { View } from 'react-native';
-import { Title, Paragraph, CustomImage } from './';
+import { Title, Paragraph, CustomImage } from './common';
 
-class Agregator extends React.Component {
+export default class Agregator extends React.Component {
     
     getControl(element) {
-        let uiElement = null;
+        console.log(element);
         switch (element.type) {
             case 'title':
-                uiElement = (
+                return (
                     <Title>{element.value}</Title>
                 )
                 break;
             case 'paragraph':
-                uiElement = (
+                return (
                     <Paragraph>{element.value}</Paragraph>
                 )
                 break;
             case 'image':
-                uiElement = (
+                return (
                     <CustomImage source={{uri: element.value}} />
                 )
                 break;
@@ -27,23 +27,23 @@ class Agregator extends React.Component {
                 break;
         }
 
-        return uiElement;
+        return <View></View>;
     }
 
     render() {
-        const bodyData = require('../data/details/singleton.json');
-        let controls = [];
-        for (let index = 0; index < bodyData.controls.length; index++) {
-            const element = bodyData.controls[index];
-            controls.push(this.getControl(element));
-        }
+        // const bodyData = require('../data/details/singleton.json');
+        // let controls = null;
+        // console.log(bodyData);
+        // for (let index = 0; index < bodyData.controls.length; index++) {
+        //     const element = bodyData.controls[index];            
+        //     const control = this.getControl(element);
+        //     if (control != null) {
+        //         controls.push(control);
+        //     }            
+        // }
 
         return (
-            <View style={{flex: 1}}>
-                {controls}
-            </View>
-        )
+            <View/>
+        );
     }
 }
-
-export default Agregator;

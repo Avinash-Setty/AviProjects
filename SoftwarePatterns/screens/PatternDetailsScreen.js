@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet, Image, Dimensions } from 'react-native';
 import { Title, Paragraph, CustomImage, SubTitle } from '../components/common';
 
 export default class PatternDetailsScreen extends React.Component {

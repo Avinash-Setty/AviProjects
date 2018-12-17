@@ -2,6 +2,8 @@ import React from 'react';
 import { View, ScrollView, StyleSheet, Image, Dimensions } from 'react-native';
 import { Title, Paragraph, CustomImage, SubTitle } from '../components/common';
 
+// Singleton: https://www.geeksforgeeks.org/singleton-design-pattern/ 
+
 export default class PatternDetailsScreen extends React.Component {
     static navigationOptions= ({ navigation }) => {
         return {
@@ -10,7 +12,6 @@ export default class PatternDetailsScreen extends React.Component {
     }
 
     getControl(element, index) {
-        console.log(index); 
         switch (element.type) {
             case 'title':
                 return (
@@ -38,7 +39,6 @@ export default class PatternDetailsScreen extends React.Component {
     render() {
         const bodyData = require('../data/details/singleton.json');
         let controls = [];
-        console.log(bodyData);
         for (let index = 0; index < bodyData.controls.length; index++) {
             const element = bodyData.controls[index];            
             const control = this.getControl(element, index);
@@ -47,7 +47,7 @@ export default class PatternDetailsScreen extends React.Component {
             }            
         }
 
-        return (
+        return ( 
             <ScrollView style={styles.container}>
                 <View style={{flex: 1}}>
                     {controls}

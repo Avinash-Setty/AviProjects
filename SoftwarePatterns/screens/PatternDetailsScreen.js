@@ -1,27 +1,33 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
-import { Title, Paragraph, CustomImage } from '../components/common';
+import { Title, Paragraph, CustomImage, SubTitle } from '../components/common';
 
 export default class PatternDetailsScreen extends React.Component {
-    static navigationOptions = {
-        title: 'Pattern Details'
-    };
+    static navigationOptions= ({ navigation }) => {
+        return {
+          title: navigation.getParam('title', 'Details'),
+        };
+    }
 
     getControl(element, index) {
-        console.log(element);
+        console.log(index); 
         switch (element.type) {
             case 'title':
                 return (
-                    <Title key={index}>{element.value}</Title>
+                    <Title key={index} uniqueKey={index}>{element.value}</Title>
                 )
-            case 'paragraph':
+            case 'paragraph': 
                 return (
-                    <Paragraph key={index}>{element.value}</Paragraph>
+                    <Paragraph key={index} uniqueKey={index}>{element.value}</Paragraph>
                 )
             case 'image':
                 return (
                     <CustomImage key={index} source={{uri: element.value}} />
-                )        
+                )  
+            case 'subtitle':
+                return (
+                    <SubTitle key={index} uniqueKey={index}>{element.value}</SubTitle>
+                )
             default:
                 break;
         }
@@ -43,7 +49,9 @@ export default class PatternDetailsScreen extends React.Component {
 
         return (
             <ScrollView style={styles.container}>
-                {controls}
+                <View style={{flex: 1}}>
+                    {controls}
+                </View>
             </ScrollView>
         );
     }

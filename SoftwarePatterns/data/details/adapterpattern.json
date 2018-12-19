@@ -1,0 +1,80 @@
+{
+    "controls": [
+        {
+            "type": "subtitle",
+            "value": "Adapter Pattern Definition:"
+        },
+        {
+            "type": "paragraph",
+            "value": "The singleton pattern is a design pattern that restricts the instantiation of a class to one object. Let's see various design options for implementing such a class. If you have a good handle on static class variables and access modifiers this should not be a difficult task."
+        },
+        {
+            "type": "title",
+            "value": "Method 1: Classic Implementation"
+        },
+        {
+            "type": "paragraph",
+            "value": "The singleton pattern is one of the simplest design patterns. Sometimes we need to have only one instance of our class for example a single DB connection shared by multiple objects as creating a separate DB connection for every object may be costly. Similarly, there can be a single configuration manager or error manager in an application that handles all problems instead of creating multiple managers."
+        },
+        {
+            "type":"image",
+            "value": "http://gdurl.com/D2y6"
+        },
+        {
+            "type":"paragraph",
+            "value": "Here we have declared getInstance() static so that we can call it without instantiating the class. The first time getInstance() is called it creates a new singleton object and after that it just returns the same object. Note that Singleton obj is not created until we need it and call getInstance() method. This is called lazy instantiation."
+        },
+        {
+            "type":"paragraph",
+            "value": "The main problem with above method is that it is not thread safe. Consider the following execution sequence."
+        },        
+        {
+            "type": "image",
+            "value": "http://gdurl.com/AeUL"
+        },
+        {
+            "type": "paragraph",
+            "value": "This execution sequence creates two objects for singleton. Therefore this classic implementation is not thread safe."
+        },
+        {
+            "type": "title",
+            "value": "Method 2: Make getInstance() synchronized"
+        },
+        {
+            "type":"image",
+            "value":"http://gdurl.com/P-ls"
+        },
+        {
+            "type":"paragraph",
+            "value":"Here using synchronized makes sure that only one thread at a time can execute getInstance(). The main disadvantage of this is method is that using synchronized every time while creating the singleton object is expensive and may decrease the performance of your program. However if performance of getInstance() is not critical for your application this method provides a clean and simple solution."
+        },
+        {
+            "type":"title",
+            "value": "Method 3: Eager Instantiation"
+        },
+        {
+            "type":"image",
+            "value":"http://gdurl.com/aAZx"
+        },
+        {
+            "type":"paragraph",
+            "value": "Here we have created instance of singleton in static initializer. JVM executes static initializer when the class is loaded and hence this is guaranteed to be thread safe. Use this method only when your singleton class is light and is used throughout the execution of your program."
+        },
+        {
+            "type":"title",
+            "value": "Method 4 (Best): Use “Double Checked Locking”"
+        },
+        {
+            "type": "paragraph",
+            "value":"If you notice carefully once an object is created synchronization is no longer useful because now obj will not be null and any sequence of operations will lead to consistent results. So we will only acquire lock on the getInstance() once, when the obj is null. This way we only synchronize the first way through, just what we want."
+        },
+        {
+            "type":"image",
+            "value":"http://gdurl.com/fiMX"
+        },
+        {
+            "type":"paragraph",
+            "value":"We have declared the obj volatile which ensures that multiple threads offer the obj variable correctly when it is being initialized to Singleton instance. This method drastically reduces the overhead of calling the synchronized method every time."
+        }
+    ]
+}

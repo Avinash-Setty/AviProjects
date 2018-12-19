@@ -36,8 +36,24 @@ export default class PatternDetailsScreen extends React.Component {
         return <View></View>;
     }
 
+    getPatternDetails(){
+        const fileName = this.props.navigation.getParam('fileName', 'singleton')
+        switch (fileName.toLowerCase()) {
+            case "singleton":
+                return require(`../data/details/singleton.json`);
+            case "bridgepattern":
+                return require(`../data/details/bridgepattern.json`);
+            case "factorypattern":
+                return require(`../data/details/factorypattern.json`);
+            case "adapterpattern":
+                return require(`../data/details/adapterpattern.json`);
+            default:
+                return require(`../data/details/singleton.json`);
+        }
+    }
+
     render() {
-        const bodyData = require('../data/details/singleton.json');
+        const bodyData = this.getPatternDetails();
         let controls = [];
         for (let index = 0; index < bodyData.controls.length; index++) {
             const element = bodyData.controls[index];            

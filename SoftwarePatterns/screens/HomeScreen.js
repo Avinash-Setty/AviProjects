@@ -40,7 +40,7 @@ class HomeScreen extends React.Component {
                 avatar={{uri:'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'}}
                 subtitle={item.description}
                 key={item.name}
-                onPress={() => this.props.navigation.navigate('Details', { title: item.name })}
+                onPress={() => this.props.navigation.navigate('Details', { title: item.name, fileName: item.key })}
               />} 
           />
       </View>
